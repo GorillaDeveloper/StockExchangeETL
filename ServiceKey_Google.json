@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "youtubevideos-385412",
+  "private_key_id": "1bba446e1f87c7810d69ab88524ca8d7be48c531",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC8ZU5H40kU14sd\n8PcITA2GZHhS0f9JQ0IuMRGJliELixTObmhifRKD1pULztC40ju940Vxodhs0Fuj\nNh5oUqF0BxxJaQ6Jl/l03fM/oPFykuiVQ6bQETt6RLVR6WDq8XHFimx9/hn6n3OK\nD84Y00O4C7eYW1L5W5rEj+i/hgaYB8N5sAnHXn69BjwMikB2U7guWYqLanSol5ZA\nlpPyyn1fgZK8sIliO98ZNZZSvSIpzMjskJ24HAibuAq+gos8vc2nOBE9kg3WdR6d\nuY26IEOjddWTad+vHJC/2MBWxiCcl73/XQ8hVAo6+uf393HNKB2dXU5QrGxYEHiK\nuWdzi6RXAgMBAAECggEATC/Pu2Sf3kzYVpBm5jUTVyD0Q9HmojMP5Ww0gmZzEJ77\nGAwwLHwV67jwZ2kIoWVrgXwSTkS8KC0Oke9F1rxrzGc/ujRBC8WovOkxAK9OVR4x\n7oMAR65gVi7JAMoXRovDjbZP75e928t1xwRjPUjaXuhmI7fy0yKHcSwdXK6PphTz\nCC9ieqmvFIk63qPZfHVPR3lw0I2Nu38icMiCgqcpIB58baEd2kKytWJEfxHv/wV9\nqMFUIGNHdlQGQQd9UU3kOkyjay5K0SSWonb7ae2QJq0hPjJJjayMnou0Cf/A2RBR\nHCPdHmBxszXW4NBhEyJ0QbzAiWVz/yV4kWptc7ys6QKBgQD0P6Sa5lEv0lw1Vmsb\nBRaICSFjKaCEI+BkJbNCJIxRIrRf5YSSmvwTLnLboiGHIZB72H78UkZ1/oWu2tNm\nU+bogkk1CPULQhdKMIJ+SrlhVkMlZ44g14FI6ch8Vi5WCMC5NZQp/2DxRlvDcXjn\nPNi5pqeVVwAAUQ2ZmjJsHuYbswKBgQDFdbwpoZk8MeEKpNz9FTeMsW0zKB6NVh7Z\noHT/f090lTUC5AXh5qVujLLjod+MYSKIf/uFgSgOBly/d2fzsBRXokhqA+UKFKNN\nL7zI2wuQebcFaU49SFlGoLtEmCsdvuY/7XdlrREbrsyUP3yGB06w9L1BEEHMi/xu\nTcI7q2eyzQKBgQCyyTNQP28GNlFQqaVU7fCEO0q5L2tTzn8eT4pbzCz55xFpcLQO\nLGyADev9YTxxkdwVC3BIemEhVeG9EGjV6myHnXbA34GfcA1kPQYIM+JmoaIc6yRa\nXeVA3f/nI55fU6De8Z028LyhYAMjmRgLC7sIijj5U+moUaxG11w5UJTXiQKBgQCe\nL6Gb4F+3/2V/d2+qOBMWXRVURDGlnHZ+dbME8+KdTOL4+99Sh8nD9GdjQMyr0y0t\nGQpQe5WxFpu6r1fRux+wzMsiUxhrqPjh3vpoFkL/bOKYLTKGma0bjaw4WYdA/yvJ\nzt010R3BhZlSskF5xeTeklIDC5kK2qJRY23VC425iQKBgQCWXm5b+YaSo0tIja+j\nJx8vHuvbJtU7r59luNwXZyKcWjwpRgwzutrY66A46AaLzoES+n/GABzxKQ/alo/M\n/q9REfNJysbrd7g9TYp4knMWaw/OijfktL5/GMrfnfe8W28lyKdpvXx9xqTzIKap\n2HtRZ59nAmoNp82ILLdOE2zPMQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gcs-for-psx-open-close-prices@youtubevideos-385412.iam.gserviceaccount.com",
+  "client_id": "114222008629717599999",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcs-for-psx-open-close-prices%40youtubevideos-385412.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
