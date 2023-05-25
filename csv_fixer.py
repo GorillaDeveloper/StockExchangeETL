@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 
 string_comma_repleaces_with =' '
 
-def remove_commas(txt_file):
+def Remove_Commas(txt_file):
     try:
         output_file = txt_file
         complete_text=""
