@@ -2,7 +2,7 @@ import os
 from google.cloud import storage
 from google.cloud.exceptions import Conflict
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'ServiceKey_Google.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'gcs-private-key.json'
 # bucket_name = 'psx-data-bucket'
 storage_client = storage.Client()
 
@@ -24,7 +24,6 @@ def create_bucket(bucket_name):
         bucket = storage_client.create_bucket(bucket,location ='us-east1')
         my_bucket = bucket
         print("bucket created")
-        # my_bucket = bucket
     except Conflict:
         bucket = storage_client.get_bucket(bucket_name)
         my_bucket = bucket
@@ -39,11 +38,11 @@ def create_bucket(bucket_name):
     # Accessing aSpecific Bucket
     # """
     # my_bucket = storage_client.get_bucket(bucket_name)
-
+def get_bucket(bucket_name):
+    global my_bucket
+    my_bucket = storage_client.get_bucket(bucket_name)
+    return my_bucket
 def Upload_To_Bucket(blob_name,file_path):
-    # create_bucket()
-    # bucket = storage_client.get_bucket(bucket_name)
-    print('bucket path: '+file_path)
     if check_if_file_is_already_uploaded(blob_name) ==False:
         try:
             

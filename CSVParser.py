@@ -1,10 +1,23 @@
 import os
+import io
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
+import pandas as pd
 
 string_comma_repleaces_with =' '
 
-def Remove_Commas(txt_file):
+def add_column(csv_data, new_column_name,value):
+    try:
+        df = pd.read_csv(io.StringIO(csv_data))
+        df[new_column_name] = value
+        columns_to_write = [col for col in df.columns if col != 'Unnamed: 0']
+        return df[columns_to_write]
+    except Exception as ex:
+        print(f'ther is an error in adding column in csv_fixer {ex}')
+def write_csv_data(df,output_file):
+    df.to_csv(output_file, sep=',', index=False)
+    
+def Remove_In_String_Commas(txt_file):
     try:
         output_file = txt_file
         complete_text=""
@@ -38,15 +51,27 @@ def Remove_Commas(txt_file):
                         current_string += char
                     # output.write(char)
                     complete_text+=char
+            
+            
+        # print("Unnecessary commas removed and date column has been added successfully and saved to '" + txt_file + "'.\n\r")
 
-        print("Unnecessary commas removed successfully and saved to '" + txt_file + "'.\n\r")
+        
+        
+        return complete_text
         # print(complete_text)
     # Usage example
-        with open(output_file, 'w') as file:
-            file.write(complete_text)
+        # with open(output_file, 'w') as file:
+        #     file.write(complete_text)
     except Exception as ex:
-        print (ex)
+        print (f'cannot remove additional commas in csv file due to this error: {ex}')
 
+def join_folder_path(folder_path,file_name):
+    newPath = os.path.join(folder_path,file_name).replace('\\','/')
+    return newPath
 
+def Convert_DataFrame_To_CSV(dataframe,file_path,file_name,indexing):
+    
+    dataframe.to_csv(join_folder_path(file_path,file_name),index=indexing)
 
+    
 
