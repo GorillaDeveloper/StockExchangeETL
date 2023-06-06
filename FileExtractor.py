@@ -1,8 +1,21 @@
 import zipfile
 import subprocess
 import os
+import platform
 # this method is used to extract .Z files, it requieres winrar in the system, and installation path must be added in the environment vairablein PATH, and restart the visual code and the terminal/cmd
 def Extract_Dot_Z_Files(file_path,output_directory,current_date):
+    print(platform.system())
+    try:
+        if(platform.system() == 'Windows'):
+            for_windows(file_path,output_directory,current_date)
+        elif (platform.system() == 'Linux') :
+            for_linux(file_path,output_directory,current_date)
+        else:
+            print('os does not support lis file extraction command')
+    except Exception as ex:
+        print(f'{file_path} file etracted: Failed : '+str(ex))
+
+def for_windows(file_path,output_directory,current_date):
     try:
         temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('/','\\')
         temp_file_path = file_path.replace('/','\\')
@@ -18,6 +31,27 @@ def Extract_Dot_Z_Files(file_path,output_directory,current_date):
         os.rename(f"{temp_folder_name}\\closing11.lis", f"{temp_folder_name}\\{current_date}.lis")
         
         subprocess.run(f"move {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
+        os.remove(f"{temp_folder_name}\\{temo_dot_Z_file_name[0]}")
+        os.removedirs(temp_folder_name)
+        print(f'{file_path} file etracted: Completed')
+    except Exception as ex:
+        print(f'{file_path} file etracted: Failed : '+str(ex))
+def for_linux(file_path,output_directory,current_date):
+    try:
+        temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('/','\\')
+        temp_file_path = file_path.replace('/','\\')
+        temp_output_directory = output_directory.replace('/','\\')
+        temo_dot_Z_file_name = file_path.split('/')[-1:]
+
+        os.mkdir(temp_folder_name)
+        
+        subprocess.run(f"mv {temp_file_path} {temp_folder_name}\\;",shell=True )
+        zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
+
+        subprocess.run(["gzip", "-d", "-S", ".Z", file_path])
+        os.rename(f"{temp_folder_name}\\closing11.lis", f"{temp_folder_name}\\{current_date}.lis")
+        
+        subprocess.run(f"mv {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
         os.remove(f"{temp_folder_name}\\{temo_dot_Z_file_name[0]}")
         os.removedirs(temp_folder_name)
         print(f'{file_path} file etracted: Completed')
