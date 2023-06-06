@@ -21,7 +21,7 @@ def for_windows(file_path,output_directory,current_date):
         temp_file_path = file_path.replace('/','\\')
         temp_output_directory = output_directory.replace('/','\\')
         temo_dot_Z_file_name = file_path.split('/')[-1:]
-
+        
         os.mkdir(temp_folder_name)
         
         subprocess.run(f"move {temp_file_path} {temp_folder_name}\\;",shell=True )
@@ -43,6 +43,7 @@ def for_linux(file_path,output_directory,current_date):
         temp_output_directory = output_directory.replace('/','\\')
         temo_dot_Z_file_name = file_path.split('/')[-1:]
 
+        print('i am trying to create folder at '+temp_folder_name+' and my current working directory is '+os.getcwd())
         os.mkdir(temp_folder_name)
         
         subprocess.run(f"mv {temp_file_path} {temp_folder_name}\\;",shell=True )
