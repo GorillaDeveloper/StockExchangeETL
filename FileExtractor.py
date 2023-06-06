@@ -38,15 +38,16 @@ def for_windows(file_path,output_directory,current_date):
         print(f'{file_path} file etracted: Failed : '+str(ex))
 def for_linux(file_path,output_directory,current_date):
     try:
-        temp_folder_name = os.path.join(output_directory, str(current_date.day))
-        temp_file_path = file_path
-        temp_output_directory = output_directory
-        temo_dot_Z_file_name = file_path.split('/')[-1:]
+        # temp_folder_name = output_directory
+        # temp_file_path = file_path
+        # temp_output_directory = output_directory
+        # temo_dot_Z_file_name = file_path.split('/')[-1:]
 
-        zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
+        # zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
 
-        print('zip file path: '+zip_file_path)
-
+        print('file path: '+file_path)
+        print('output directory path: '+output_directory)
+        
         # subprocess.run(["gzip", "-d", ".Z", file_path])
         # subprocess.run(f"mv {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
         print(f'{file_path} file etracted: Completed')
