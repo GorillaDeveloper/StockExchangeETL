@@ -38,22 +38,22 @@ def for_windows(file_path,output_directory,current_date):
         print(f'{file_path} file etracted: Failed : '+str(ex))
 def for_linux(file_path,output_directory,current_date):
     try:
-        temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('\\','/')
-        temp_file_path = file_path.replace('\\','/')
-        temp_output_directory = output_directory.replace('\\','/')
-        temo_dot_Z_file_name = file_path.split('\\')[-1:]
+        temp_folder_name = os.path.join(output_directory, str(current_date.day))
+        temp_file_path = file_path
+        temp_output_directory = output_directory
+        temo_dot_Z_file_name = file_path
 
         print('i am trying to create folder at '+temp_folder_name+' and my current working directory is '+os.getcwd())
         os.mkdir(temp_folder_name)
         
-        subprocess.run(f"mv {temp_file_path} {temp_folder_name}\\;",shell=True )
+        subprocess.run(f"mv {temp_file_path} {temp_folder_name}/",shell=True )
         zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
 
         subprocess.run(["gzip", "-d", "-S", ".Z", file_path])
-        os.rename(f"{temp_folder_name}\\closing11.lis", f"{temp_folder_name}\\{current_date}.lis")
+        os.rename(f"{temp_folder_name}/closing11.lis", f"{temp_folder_name}/{current_date}.lis")
         
-        subprocess.run(f"mv {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
-        os.remove(f"{temp_folder_name}\\{temo_dot_Z_file_name[0]}")
+        subprocess.run(f"mv {temp_folder_name}/{current_date}.lis {temp_output_directory}/",shell=True )
+        os.remove(f"{temp_folder_name}/{temo_dot_Z_file_name[0]}")
         os.removedirs(temp_folder_name)
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
