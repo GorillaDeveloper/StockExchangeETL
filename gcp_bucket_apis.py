@@ -4,7 +4,7 @@
 
 
 import os
-import google.cloud.storage
+from  google.cloud.storage import storage
 from google.cloud.exceptions import Conflict
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'gcs-private-key.json'
