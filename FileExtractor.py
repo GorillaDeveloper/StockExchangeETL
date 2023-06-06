@@ -43,20 +43,21 @@ def for_linux(file_path,output_directory,current_date):
         temp_folder_name = os.path.join(output_directory, str(current_date.day))
         temp_file_path = file_path
         temp_output_directory = output_directory
-        temo_dot_Z_file_name = file_path.split('/')[-1:]
+        temp_dot_Z_file_name = file_path.split('/')[-1:]
 
         print('i am trying to create folder at '+temp_folder_name+' and my current working directory is '+os.getcwd())
         print('output directory: '+output_directory)
         
         tt =  str(current_date)+'.lis'
         lis_file_name = file_path.replace('.Z','')
+        print(f'lis file name: {lis_file_name}')
         print(f'mv {lis_file_name} {os.path.join(output_directory, tt)}')
         # os.mkdir(temp_folder_name)
         
         # subprocess.run(f"mv {temp_file_path} {temp_folder_name}/",shell=True )
         # zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
         subprocess.run(["gzip", "-d", ".Z", file_path])
-        subprocess.run(["mv ","-f", temo_dot_Z_file_name,tt])
+        subprocess.run(["mv ","-f", lis_file_name,tt])
         
         # os.rename(f"{temp_folder_name}/{lis_file_name}", f"{temp_folder_name}/{current_date}.lis")
         
