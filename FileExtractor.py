@@ -47,9 +47,10 @@ def for_linux(file_path,output_directory,current_date):
 
         print('file path: '+file_path)
         print('output directory path: '+output_directory)
-        
-        # subprocess.run(["gzip", "-d", ".Z", file_path])
-        # subprocess.run(f"mv {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
+        lis_file_path = file_path.replace('.Z','')
+        rename_file_path = os.path.join(output_directory,str(current_date)+'.lis')
+        subprocess.run(["gzip", "-d", ".Z", file_path])
+        subprocess.run(f"mv {lis_file_path} {rename_file_path}",shell=True )
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
         print(f'{file_path} file etracted: Failed : '+str(ex))
