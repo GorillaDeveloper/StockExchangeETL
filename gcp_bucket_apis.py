@@ -1,15 +1,10 @@
-# import sys
-
-# sys.path.append('/home/ec2-user/.local/lib/python3.9/site-packages')
-
-
 import os
-from  google.cloud.storage import storage
+import  google.cloud.storage
 from google.cloud.exceptions import Conflict
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'gcs-private-key.json'
 # bucket_name = 'psx-data-bucket'
-storage_client = storage.Client()
+storage_client =google.cloud.storage.Client()
 
 files = []
 global my_bucket 
