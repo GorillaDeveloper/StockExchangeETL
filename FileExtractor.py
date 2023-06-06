@@ -53,9 +53,9 @@ def for_linux(file_path,output_directory,current_date):
         # zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
         lis_file_name = file_path.replace('.Z','')
         subprocess.run(["gzip", "-d", ".Z", file_path])
-        subprocess.run(["sudo", "mv ", lis_file_name,str(current_date)+'.lis'])
+        subprocess.run(["mv ", lis_file_name,str(current_date)+'.lis'])
         
-        os.rename(f"{temp_folder_name}/{lis_file_name}", f"{temp_folder_name}/{current_date}.lis")
+        # os.rename(f"{temp_folder_name}/{lis_file_name}", f"{temp_folder_name}/{current_date}.lis")
         
         # subprocess.run(f"mv {temp_folder_name}/{current_date}.lis {temp_output_directory}/",shell=True )
         # os.remove(f"{temp_folder_name}/{temo_dot_Z_file_name[0]}")
