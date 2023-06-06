@@ -36,21 +36,15 @@ def for_windows(file_path,output_directory,current_date):
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
         print(f'{file_path} file etracted: Failed : '+str(ex))
+
 def for_linux(file_path,output_directory,current_date):
     try:
-        # temp_folder_name = output_directory
-        # temp_file_path = file_path
-        # temp_output_directory = output_directory
-        # temo_dot_Z_file_name = file_path.split('/')[-1:]
-
-        # zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
-
         print('file path: '+file_path)
         print('output directory path: '+output_directory)
         lis_file_path = file_path.replace('.Z','')
         rename_file_path = os.path.join(output_directory,str(current_date)+'.lis')
         subprocess.run(["gzip", "-d", ".Z", file_path])
-        subprocess.run(f"mv {lis_file_path} {rename_file_path}",shell=True )
+        subprocess.run(f"mv -f {lis_file_path} {rename_file_path}",shell=True )
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
         print(f'{file_path} file etracted: Failed : '+str(ex))
