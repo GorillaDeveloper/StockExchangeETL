@@ -47,7 +47,7 @@ def for_linux(file_path,output_directory,current_date):
 
         print('i am trying to create folder at '+temp_folder_name+' and my current working directory is '+os.getcwd())
         print('output directory: '+output_directory)
-        tt = os.path.join(output_directory, str(current_date)+'.lis')
+        tt =  str(current_date)+'.lis'
         lis_file_name = file_path.replace('.Z','')
         print(f'mv {lis_file_name} {os.path.join(output_directory, tt)}')
         # os.mkdir(temp_folder_name)
