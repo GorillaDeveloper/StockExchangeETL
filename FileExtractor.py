@@ -46,13 +46,15 @@ def for_linux(file_path,output_directory,current_date):
         temo_dot_Z_file_name = file_path.split('/')[-1:]
 
         print('i am trying to create folder at '+temp_folder_name+' and my current working directory is '+os.getcwd())
+        print('output directory: '+output_directory)
         # os.mkdir(temp_folder_name)
         
         # subprocess.run(f"mv {temp_file_path} {temp_folder_name}/",shell=True )
         # zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
-
+        lis_file_name = file_path.replace('.Z','')
         subprocess.run(["gzip", "-d", ".Z", file_path])
-        lis_file_name = temo_dot_Z_file_name.replace('.Z','')
+        subprocess.run(["sudo", "mv ", lis_file_name,str(current_date)+'.lis'])
+        
         os.rename(f"{temp_folder_name}/{lis_file_name}", f"{temp_folder_name}/{current_date}.lis")
         
         # subprocess.run(f"mv {temp_folder_name}/{current_date}.lis {temp_output_directory}/",shell=True )
