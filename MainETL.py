@@ -169,14 +169,14 @@ def MultiThreadedAndProcessing_ETL_Start():
     process1.start()
     process2.start()
     
-    process3 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BG,args=(BUCKET_NAME
-                                                                                                   ,PROJECT_ID
-                                                                                                   ,DATASET
-                                                                                                   ,TABLE
-                                                                                                   ,BUCKET_TEMP_LOCATION
-                                                                                                   ,SCHEMA
-                                                                                                   ,shared_list
-                                                                                                   ,True))
+    # process3 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BG,args=(BUCKET_NAME
+    #                                                                                                ,PROJECT_ID
+    #                                                                                                ,DATASET
+    #                                                                                                ,TABLE
+    #                                                                                                ,BUCKET_TEMP_LOCATION
+    #                                                                                                ,SCHEMA
+    #                                                                                                ,shared_list
+    #                                                                                                ,True))
     process4 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BG,args=(BUCKET_NAME
                                                                                                    ,PROJECT_ID
                                                                                                    ,DATASET
@@ -188,7 +188,7 @@ def MultiThreadedAndProcessing_ETL_Start():
     
     # CustomBigQuery.Transfer_CSV_From_GCS_To_BQ(csv_file_path,BUCKET_NAME,PROJECT_ID,DATASET,TABLE,BUCKET_TEMP_LOCATION,SCHEMA)
 
-    process3.start()
+    # process3.start()
     process4.start()
 
 
@@ -198,7 +198,7 @@ def MultiThreadedAndProcessing_ETL_Start():
     process2.join()
     shared_list.append("end")
     shared_list.append("end")
-    process3.join()
+    # process3.join()
     process4.join()
     next_line()
     print('Total Execution Time: '+str(datetime.now() - start))
