@@ -1,7 +1,9 @@
+import argparse
 from datetime import date, timedelta,datetime
 
 import multiprocessing
 import os
+import sys
 import DownloadFilesFrom_PSX
 import gcp_bucket_apis
 import CustomBigQuery
@@ -206,4 +208,30 @@ def MultiThreadedAndProcessing_ETL_Start():
     print('main ends')
 
 if __name__ == '__main__':
-    MultiThreadedAndProcessing_ETL_Start()
+    if '--startdate' in sys.argv and '--enddate' in sys.argv:
+
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--startdate', help='Start date value')
+        parser.add_argument('--enddate', help='End date value')
+
+        args = parser.parse_args()
+
+
+        START_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
+        print(str(START_DATE))
+        END_DATE = datetime.strptime(args.enddate, "%Y-%m-%d").date()
+        print(str(END_DATE))
+        MultiThreadedAndProcessing_ETL_Start()
+    elif '--startdate' in sys.argv and not '--enddate' in sys.argv:
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--startdate', help='Start date value')
+
+        args = parser.parse_args()
+
+        START_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
+        print(str(START_DATE))
+        END_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
+        print(str(END_DATE))
+        MultiThreadedAndProcessing_ETL_Start()
