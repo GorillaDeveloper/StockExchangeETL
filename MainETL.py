@@ -64,19 +64,21 @@ def DownloadFile_Process_1(dateStart,dateEnd,shared_memory):
 
         url = PSX_OPENING_AND_CLOSING_PRICES_BASE_URL+f'{CurrentDate.isoformat()}.Z'
         DownloadFilesFrom_PSX.Download_PSX_Data_Files(url,BaseFolderPath,DownloadedFileName)
-
-        if(os.path.exists( DownloadedFileNamePath)):
-            FileExtractor.Extract_Dot_Z_Files(DownloadedFileNamePath,BaseFolderPath,CurrentDate)
-            first_line = "DATE_TIME|COMPANY_SYMBOL_NAME|COMPANY_CODE|COMPANY_NAME|OPEN_RATE|HIGHEST_RATE|LOWEST_RATE|LAST_RATE|TURN_OVER|PREVIOUS_DAY_RATE|||"
-            lis_df = LisParser.ParseLIS(BaseFolderPath,ExtractedFileName,first_line,3)
-            CSVParser.Convert_DataFrame_To_CSV(lis_df,BaseFolderPath,CSVFileName,False)
-            os.remove(ExtractedFileNamePath)
-            CSVFileNamePath = join_folder_path(BaseFolderPath, CSVFileName)
-            process1 = multiprocessing.Process(target=test,args=(CSVFileNamePath,CSVFileNamePath,shared_memory))
-            process1.start()
-            
-        else:
-            print(f'{DownloadedFileName} not found')
+        try:
+            if(os.path.exists( DownloadedFileNamePath)):
+                FileExtractor.Extract_Dot_Z_Files(DownloadedFileNamePath,BaseFolderPath,CurrentDate)
+                first_line = "DATE_TIME|COMPANY_SYMBOL_NAME|COMPANY_CODE|COMPANY_NAME|OPEN_RATE|HIGHEST_RATE|LOWEST_RATE|LAST_RATE|TURN_OVER|PREVIOUS_DAY_RATE|||"
+                lis_df = LisParser.ParseLIS(BaseFolderPath,ExtractedFileName,first_line,3)
+                CSVParser.Convert_DataFrame_To_CSV(lis_df,BaseFolderPath,CSVFileName,False)
+                os.remove(ExtractedFileNamePath)
+                CSVFileNamePath = join_folder_path(BaseFolderPath, CSVFileName)
+                process1 = multiprocessing.Process(target=test,args=(CSVFileNamePath,CSVFileNamePath,shared_memory))
+                process1.start()
+                
+            else:
+                print(f'{DownloadedFileName} not found')
+        except Exception as ex:
+            print(f'error thrown: {ex}')
 
         next_line()
         CurrentDate += timedelta(days=1)

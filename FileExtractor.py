@@ -36,24 +36,15 @@ def for_windows(file_path,output_directory,current_date):
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
         print(f'{file_path} file etracted: Failed : '+str(ex))
+
 def for_linux(file_path,output_directory,current_date):
     try:
-        temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('/','\\')
-        temp_file_path = file_path.replace('/','\\')
-        temp_output_directory = output_directory.replace('/','\\')
-        temo_dot_Z_file_name = file_path.split('/')[-1:]
-
-        os.mkdir(temp_folder_name)
-        
-        subprocess.run(f"mv {temp_file_path} {temp_folder_name}\\;",shell=True )
-        zip_file_path = os.path.join(temp_folder_name, temo_dot_Z_file_name[0])
-
-        subprocess.run(["gzip", "-d", "-S", ".Z", file_path])
-        os.rename(f"{temp_folder_name}\\closing11.lis", f"{temp_folder_name}\\{current_date}.lis")
-        
-        subprocess.run(f"mv {temp_folder_name}\\{current_date}.lis {temp_output_directory}\\;",shell=True )
-        os.remove(f"{temp_folder_name}\\{temo_dot_Z_file_name[0]}")
-        os.removedirs(temp_folder_name)
+        print('file path: '+file_path)
+        print('output directory path: '+output_directory)
+        lis_file_path = file_path.replace('.Z','')
+        rename_file_path = os.path.join(output_directory,str(current_date)+'.lis')
+        subprocess.run(["gzip", "-d", ".Z", file_path])
+        subprocess.run(f"mv -f {lis_file_path} {rename_file_path}",shell=True )
         print(f'{file_path} file etracted: Completed')
     except Exception as ex:
         print(f'{file_path} file etracted: Failed : '+str(ex))
