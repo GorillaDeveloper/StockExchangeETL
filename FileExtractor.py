@@ -38,7 +38,7 @@ def for_windows(file_path,output_directory,current_date):
         print(f'{file_path} file etracted: Failed : '+str(ex))
 def for_linux(file_path,output_directory,current_date):
     try:
-        temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('/','\\')
+        temp_folder_name = os.path.join(output_directory, str(current_date.day)).replace('\\','/')
         temp_file_path = file_path.replace('\\','/')
         temp_output_directory = output_directory.replace('\\','/')
         temo_dot_Z_file_name = file_path.split('\\')[-1:]
