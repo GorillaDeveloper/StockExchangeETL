@@ -1,9 +1,10 @@
-import sys
-sys.path.append('/path/to/directory')
+# import sys
+
+# sys.path.append('/home/ec2-user/.local/lib/python3.9/site-packages')
 
 
 import os
-from google.cloud import storage
+import google.cloud.storage
 from google.cloud.exceptions import Conflict
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'gcs-private-key.json'
