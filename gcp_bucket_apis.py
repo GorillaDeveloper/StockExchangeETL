@@ -1,3 +1,7 @@
+import sys
+sys.path.append('/path/to/directory')
+
+
 import os
 from google.cloud import storage
 from google.cloud.exceptions import Conflict
