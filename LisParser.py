@@ -4,6 +4,7 @@ import io
 import os
  
 import pandas as pd
+import Logs
 # step 2
  
 # path = 'data/SymbolsShortLongName'
@@ -38,7 +39,8 @@ def ParseLIS(path,file_name,first_line_column,droped_column):
         first_line_column = first_line_column[:-3]
         # df.columns = ['Date','CompanySymbolName','CompanyCode','CompanyName','OpenRate','HighestRate','LowestRate','LastRateDiff','TurnOver','PreviousDayRate']
         df.columns = first_line_column.split('|')
-        print('lis file converted to dataframe')
+        # print('lis file converted to dataframe')
+        Logs.print_message('lis file converted to dataframe')
         return df
         
         # print(df)
@@ -49,8 +51,8 @@ def Convert_LIS_To_CSV(df,path,file_name):
     csv_path = os.path.join(path,csv_file_name)
 
     df.to_csv(csv_path,index=False)
-    print('lis file converted to csv')
-
+    # print('lis file converted to csv')
+    Logs.print_message('lis file converted to csv')
 
 def ParseLIS_With_String_Content(content,first_line_column,drop_columns):
     # os.remove(os.path.join(base_path,base_file_name))
@@ -62,10 +64,13 @@ def ParseLIS_With_String_Content(content,first_line_column,drop_columns):
     first_line_column = first_line_column[:-3]
     # df.columns = ['Date','CompanySymbolName','CompanyCode','CompanyName','OpenRate','HighestRate','LowestRate','LastRateDiff','TurnOver','PreviousDayRate']
     df.columns = first_line_column.split('|')
-    print('lis file converted to dataframe')
+    # print('lis file converted to dataframe')
+    Logs.print_message('lis file converted to dataframe')
     return df
 
 def DeleteLISFile(base_path,base_file_name):
-    print(os.path.join(base_path,base_file_name))
+    # print(os.path.join(base_path,base_file_name))
+    Logs.print_message(os.path.join(base_path,base_file_name))
     os.remove(os.path.join(base_path,base_file_name))
-    print(f'{base_file_name} file is deleted')
+    # print(f'{base_file_name} file is deleted')
+    Logs.print_message(f'{base_file_name} file is deleted')

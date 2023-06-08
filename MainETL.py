@@ -1,6 +1,5 @@
 import argparse
 from datetime import date, timedelta,datetime
-
 import multiprocessing
 import os
 import sys
@@ -10,7 +9,7 @@ import CustomBigQuery
 import CSVParser
 import LisParser
 import FileExtractor
-
+import Logs
 
 BUCKET_NAME = 'psx-opening-and-closing-price-data'
 BUCKET_TEMP_LOCATION = f'gs://{BUCKET_NAME}/temp'
@@ -29,7 +28,9 @@ BASE_FOLDER_PATH_OF_PSX_OPENING_AND_CLOSING_PRICES_DATA=r'data/PSXOpeningAndClos
 START_DATE = date(2016, 2, 1)
 END_DATE =  date(2016, 2, 5)
 def next_line():
-    print('\n\r')
+    Logs.print_message('\n\r')
+
+
     
 def join_folder_path(folder_path,file_name):
     newPath = os.path.join(folder_path,file_name).replace('\\','/')
@@ -76,15 +77,20 @@ def DownloadFile_Process_1(dateStart,dateEnd,shared_memory):
                 process1.start()
                 
             else:
-                print(f'{DownloadedFileName} not found')
+                # print(f'{DownloadedFileName} not found')
+                Logs.print_message(f'{DownloadedFileName} not found')
         except Exception as ex:
-            print(f'error thrown: {ex}')
+            # print(f'error thrown: {ex}')
+            Logs.print_message(f'error thrown: {ex}')
 
         next_line()
         CurrentDate += timedelta(days=1)
 
 def test(csv_file_blob,csv_file_path,shared_memory):
-    print('blob: '+csv_file_blob)
+    # print('blob: '+csv_file_blob)
+    
+    Logs.print_message('blob: '+csv_file_blob)
+
     gcp_bucket_apis.get_bucket(BUCKET_NAME)
     gcp_bucket_apis.Upload_To_Bucket(csv_file_blob,csv_file_path)
     shared_memory.append(csv_file_blob)
@@ -108,7 +114,8 @@ def Convert_Lis_File_To_CSV(base_folder,downloaded_file_name,extracted_file_name
             # process1.start()
             
     else:
-        print(f'{downloaded_file_name} not found')
+        # print(f'{downloaded_file_name} not found')
+        Logs.print_message(f'{downloaded_file_name} not found')
 
 def StartETL():
 
@@ -143,7 +150,8 @@ def StartETL():
             # CustomBigQuery.Upload_CSV_Data_In_BQ(CSV_FILE_NAME_PATH,BUCKET_NAME,BUCKET_TEMP_LOCATION,PROJECT_ID,DATASET,TABLE,COLUMN_NAMES,SCHEMA)
             CustomBigQuery.Transfer_CSV_From_GCS_To_BQ(CSV_FILE_NAME_PATH,BUCKET_NAME,PROJECT_ID,DATASET,TABLE,BUCKET_TEMP_LOCATION,SCHEMA)
         else:
-            print(f'{DOWNLOADED_FILE_NAME} not found')
+            # print(f'{DOWNLOADED_FILE_NAME} not found')
+            Logs.print_message(f'{DOWNLOADED_FILE_NAME} not found')
         next_line()
         CURRENT_DATE += timedelta(days=1)
 
@@ -169,15 +177,15 @@ def MultiThreadedAndProcessing_ETL_Start():
     process1.start()
     process2.start()
     
-    # process3 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BG,args=(BUCKET_NAME
-    #                                                                                                ,PROJECT_ID
-    #                                                                                                ,DATASET
-    #                                                                                                ,TABLE
-    #                                                                                                ,BUCKET_TEMP_LOCATION
-    #                                                                                                ,SCHEMA
-    #                                                                                                ,shared_list
-    #                                                                                                ,True))
-    process4 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BG,args=(BUCKET_NAME
+    process3 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BQ,args=(BUCKET_NAME
+                                                                                                   ,PROJECT_ID
+                                                                                                   ,DATASET
+                                                                                                   ,TABLE
+                                                                                                   ,BUCKET_TEMP_LOCATION
+                                                                                                   ,SCHEMA
+                                                                                                   ,shared_list
+                                                                                                   ,True))
+    process4 = multiprocessing.Process(target=CustomBigQuery.StartTransferingDataInLoopTo_BQ,args=(BUCKET_NAME
                                                                                                    ,PROJECT_ID
                                                                                                    ,DATASET
                                                                                                    ,TABLE
@@ -201,13 +209,14 @@ def MultiThreadedAndProcessing_ETL_Start():
     # process3.join()
     process4.join()
     next_line()
-    print('Total Execution Time: '+str(datetime.now() - start))
+    # print('Total Execution Time: '+str(datetime.now() - start))
+    Logs.print_message('Total Execution Time: '+str(datetime.now() - start))
 
 
-    for item in shared_list:
-        print(item+"\n\r")
     next_line()
-    print('main ends')
+    Logs.print_message('main ends')
+
+    Logs.write_logs_in_log_file()
 
 if __name__ == '__main__':
     if '--startdate' in sys.argv and '--enddate' in sys.argv:
@@ -221,9 +230,11 @@ if __name__ == '__main__':
 
 
         START_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
-        print(str(START_DATE))
+        # print(str(START_DATE))
+        Logs.print_message("Start Date: "+str(START_DATE))
         END_DATE = datetime.strptime(args.enddate, "%Y-%m-%d").date()
-        print(str(END_DATE))
+        # print(str(END_DATE))
+        Logs.print_message("End Date: "+str(END_DATE))
         MultiThreadedAndProcessing_ETL_Start()
     elif '--startdate' in sys.argv and not '--enddate' in sys.argv:
 
@@ -233,7 +244,11 @@ if __name__ == '__main__':
         args = parser.parse_args()
 
         START_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
-        print(str(START_DATE))
+        
+        Logs.print_message("Start Date: "+str(START_DATE))
         END_DATE = datetime.strptime(args.startdate, "%Y-%m-%d").date()
-        print(str(END_DATE))
+        # Logs.print_message("End Date: "+str(END_DATE))
+
         MultiThreadedAndProcessing_ETL_Start()
+    elif '--gcstobq' in sys.argv:
+        CustomBigQuery.Transfer_CSV_From_GCS_To_BQ()

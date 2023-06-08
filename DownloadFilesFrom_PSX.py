@@ -2,7 +2,7 @@ import requests
 import os
 import zipfile
 from datetime import date, timedelta
-
+import Logs
 
 
 def download_file(url, folder_path,file_name):
@@ -14,37 +14,37 @@ def download_file(url, folder_path,file_name):
         if not os.path.exists(save_path):  # Check if the file already exists
             with open(save_path, 'wb') as file:
                 file.write(response.content)
-            print(f"File downloaded: {file_name}")
+            # print(f"File downloaded: {file_name}")
+            Logs.print_message(f"File downloaded: {file_name}")
             # extract_zip(save_path, folder_path)  # Extract the ZIP file
             # os.remove(save_path)  # Delete the ZIP file
         else:
-            print(f"File already exists: {file_name}")
+            # print(f"File already exists: {file_name}")
+            Logs.print_message(f"File already exists: {file_name}")
             zip_filename = os.path.basename(save_path)
             # extract_zip(save_path, folder_path)  # Extract the ZIP file
             # os.remove(save_path)  # Delete the ZIP file
 
             # BucketToBigQuery.upload_data_on_BQ(text_file_path)
     else:
-        print("Failed to download the file.")
+        # print("Failed to download the file.")
+        Logs.print_message("Failed to download the file.")
 
 def extract_zip(zip_path, extract_path):
     try:
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             zip_ref.extractall(extract_path)
             
-        print(f"ZIP file extracted: {zip_path}")
+        # print(f"ZIP file extracted: {zip_path}")
+        Logs.print_message(f"ZIP file extracted: {zip_path}")
     except:
-        print(f"ZIP file extracted: {zip_path} is corrupted")
+        # print(f"ZIP file extracted: {zip_path} is corrupted")
+        Logs.print_message(f"ZIP file extracted: {zip_path} is corrupted")
 
 
 
 
 
-# Specify the start and end date range
-start_date = date(2014, 2, 1)
-end_date = date(2023, 5, 22)
-# Iterate over the dates in the range
-# current_date = start_date
 
 
 def Download_PSX_Data_Files(url,folder_path,file_name):
