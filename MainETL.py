@@ -216,7 +216,7 @@ def MultiThreadedAndProcessing_ETL_Start():
     next_line()
     Logs.print_message('main ends')
 
-    Logs.write_logs_in_log_file()
+    # Logs.write_logs_in_log_file()
 
 if __name__ == '__main__':
     if '--startdate' in sys.argv and '--enddate' in sys.argv:

@@ -69,7 +69,7 @@ def StartTransferingDataInLoopTo_BQ(bucket_name,  project_id, dataset_id, table_
     transactionalPauseTime = 0.5
     if isWorkingOnOddIndexs:
         firstIndex=1
-        transactionalPauseTime = 1
+        # transactionalPauseTime = 1
     
 
     try:
@@ -91,15 +91,17 @@ def StartTransferingDataInLoopTo_BQ(bucket_name,  project_id, dataset_id, table_
                     Logs.print_message('file path does not exist, so i am waiting...'+str(firstIndex))
                     if(temp_list[firstIndex] == 'end'):
                         break
-                    time.sleep(2)
+                    time.sleep(transactionalPauseTime)
             else:
                 # print('no file paths exist in shared memory, i am waiting... index" '+str(firstIndex))
                 Logs.print_message('no file paths exist in shared memory, i am waiting... index" '+str(firstIndex))
                 # if(temp_list[firstIndex-1] == 'end'):
                 #     break
-                time.sleep(2)
+                time.sleep(transactionalPauseTime)
     except Exception as ex:
         Logs.print_message(f'Brig Query multi process stops due to this error: {ex}')
+
+    
         
 
         
