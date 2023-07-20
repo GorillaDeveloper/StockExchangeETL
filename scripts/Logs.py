@@ -19,3 +19,6 @@ def print_message(message):
     logger.info(message)
     print(message)
 
+def next_line():
+    print_message('\n\r')
+

@@ -2,7 +2,7 @@ import requests
 import os
 import zipfile
 from datetime import date, timedelta
-import Logs
+import scripts.Logs as log
 
 
 def download_file(url, folder_path,file_name):
@@ -15,12 +15,12 @@ def download_file(url, folder_path,file_name):
             with open(save_path, 'wb') as file:
                 file.write(response.content)
             # print(f"File downloaded: {file_name}")
-            Logs.print_message(f"File downloaded: {file_name}")
+            log.print_message(f"File downloaded: {file_name}")
             # extract_zip(save_path, folder_path)  # Extract the ZIP file
             # os.remove(save_path)  # Delete the ZIP file
         else:
             # print(f"File already exists: {file_name}")
-            Logs.print_message(f"File already exists: {file_name}")
+            log.print_message(f"File already exists: {file_name}")
             zip_filename = os.path.basename(save_path)
             # extract_zip(save_path, folder_path)  # Extract the ZIP file
             # os.remove(save_path)  # Delete the ZIP file
@@ -28,7 +28,7 @@ def download_file(url, folder_path,file_name):
             # BucketToBigQuery.upload_data_on_BQ(text_file_path)
     else:
         # print("Failed to download the file.")
-        Logs.print_message("Failed to download the file.")
+        log.print_message("Failed to download the file.")
 
 def extract_zip(zip_path, extract_path):
     try:
@@ -36,10 +36,10 @@ def extract_zip(zip_path, extract_path):
             zip_ref.extractall(extract_path)
             
         # print(f"ZIP file extracted: {zip_path}")
-        Logs.print_message(f"ZIP file extracted: {zip_path}")
+        log.print_message(f"ZIP file extracted: {zip_path}")
     except:
         # print(f"ZIP file extracted: {zip_path} is corrupted")
-        Logs.print_message(f"ZIP file extracted: {zip_path} is corrupted")
+        log.print_message(f"ZIP file extracted: {zip_path} is corrupted")
 
 
 

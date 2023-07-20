@@ -1,7 +1,7 @@
 import os
 from google.cloud import storage
 from google.cloud.exceptions import Conflict
-import Logs
+import scripts.Logs as log
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'gcs-private-key.json'
 # bucket_name = 'psx-data-bucket'
@@ -24,11 +24,11 @@ def create_bucket(bucket_name):
         bucket = storage_client.bucket(bucket_name)
         bucket = storage_client.create_bucket(bucket,location ='us-east1')
         my_bucket = bucket
-        Logs.print_message("bucket created")
+        log.print_message("bucket created")
     except Conflict:
         bucket = storage_client.get_bucket(bucket_name)
         my_bucket = bucket
-        Logs.print_message("bucket already created")
+        log.print_message("bucket already created")
 
     """
     Print Bucket Detail
@@ -49,13 +49,13 @@ def Upload_To_Bucket(blob_name,file_path):
             
             blob = my_bucket.blob(blob_name)
             blob.upload_from_filename(file_path)
-            Logs.print_message(f'file name {blob_name} has been uploaded to gcs')
+            log.print_message(f'file name {blob_name} has been uploaded to gcs')
             return True
         except Exception as e:
-            Logs.print_message(f'file name {blob_name} can not be uploaded due to these errors {e} to gcs')
+            log.print_message(f'file name {blob_name} can not be uploaded due to these errors {e} to gcs')
             return False
     else:
-        Logs.print_message (f'file {blob_name} is already uploaded to gcs')
+        log.print_message (f'file {blob_name} is already uploaded to gcs')
 
 """
 To check the current uploading file, either it is already available

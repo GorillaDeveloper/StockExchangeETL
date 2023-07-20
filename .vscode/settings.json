@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./script/BigQuery",
+        "./script/Storage",
+        "./script/Parser"
+    ]
+}

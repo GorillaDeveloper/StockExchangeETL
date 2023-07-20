@@ -3,7 +3,7 @@ import io
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 import pandas as pd
-import Logs
+import scripts.Logs as log
 
 string_comma_repleaces_with =' '
 
@@ -14,7 +14,7 @@ def add_column(csv_data, new_column_name,value):
         columns_to_write = [col for col in df.columns if col != 'Unnamed: 0']
         return df[columns_to_write]
     except Exception as ex:
-        Logs.print_message(f'ther is an error in adding column in csv_fixer {ex}')
+        log.print_message(f'ther is an error in adding column in csv_fixer {ex}')
         # print(f'ther is an error in adding column in csv_fixer {ex}')
 def write_csv_data(df,output_file):
     df.to_csv(output_file, sep=',', index=False)
@@ -65,7 +65,7 @@ def Remove_In_String_Commas(txt_file):
         # with open(output_file, 'w') as file:
         #     file.write(complete_text)
     except Exception as ex:
-        Logs.print_message (f'cannot remove additional commas in csv file due to this error: {ex}')
+        log.print_message (f'cannot remove additional commas in csv file due to this error: {ex}')
         # print (f'cannot remove additional commas in csv file due to this error: {ex}')
 
 def join_folder_path(folder_path,file_name):

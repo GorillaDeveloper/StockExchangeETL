@@ -147,3 +147,116 @@
 2023-06-08 10:03:06,754 - INFO - 
 
 2023-06-08 10:03:06,754 - INFO - main ends
+2023-07-20 04:52:53,723 - INFO - Start Date: 2013-11-04
+2023-07-20 04:52:53,724 - INFO - End Date: 2013-11-10
+2023-07-20 04:52:53,724 - INFO - 
+
+2023-07-20 04:52:57,376 - INFO - bucket already created
+2023-07-20 04:53:00,591 - INFO - Dataset 'PSXOpeningAndClosingPricesDataset2' has been created.
+2023-07-20 04:53:05,304 - INFO - File downloaded: 20131104_new.lis.Z
+2023-07-20 04:53:05,313 - INFO - File downloaded: 20131108_new.lis.Z
+2023-07-20 04:53:05,347 - INFO - Operating System: Windows
+2023-07-20 04:53:05,357 - INFO - Operating System: Windows
+2023-07-20 04:53:05,674 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131104_new.lis.Z file etracted: Completed
+2023-07-20 04:53:05,698 - INFO - lis file converted to dataframe
+2023-07-20 04:53:05,703 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131108_new.lis.Z file etracted: Completed
+2023-07-20 04:53:05,722 - INFO - 
+
+2023-07-20 04:53:05,732 - INFO - lis file converted to dataframe
+2023-07-20 04:53:05,744 - INFO - 
+
+2023-07-20 04:53:06,900 - INFO - File downloaded: 20131105_new.lis.Z
+2023-07-20 04:53:06,901 - INFO - Operating System: Windows
+2023-07-20 04:53:06,910 - INFO - Failed to download the file.
+2023-07-20 04:53:06,910 - INFO - 20131109_new.lis.Z not found
+2023-07-20 04:53:06,911 - INFO - 
+
+2023-07-20 04:53:07,191 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131105_new.lis.Z file etracted: Completed
+2023-07-20 04:53:07,207 - INFO - lis file converted to dataframe
+2023-07-20 04:53:07,218 - INFO - 
+
+2023-07-20 04:53:07,540 - INFO - blob: data/PSXOpeningAndClosingPrices/2013/11-Nov/201304nov.csv
+2023-07-20 04:53:07,567 - INFO - blob: data/PSXOpeningAndClosingPrices/2013/11-Nov/201308nov.csv
+2023-07-20 04:53:08,086 - INFO - Failed to download the file.
+2023-07-20 04:53:08,087 - INFO - 20131110_new.lis.Z not found
+2023-07-20 04:53:08,087 - INFO - 
+
+2023-07-20 04:53:08,453 - INFO - File downloaded: 20131106_new.lis.Z
+2023-07-20 04:53:08,454 - INFO - Operating System: Windows
+2023-07-20 04:53:08,700 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131106_new.lis.Z file etracted: Completed
+2023-07-20 04:53:08,714 - INFO - lis file converted to dataframe
+2023-07-20 04:53:08,723 - INFO - 
+
+2023-07-20 04:53:09,061 - INFO - blob: data/PSXOpeningAndClosingPrices/2013/11-Nov/201305nov.csv
+2023-07-20 04:53:09,541 - INFO - file data/PSXOpeningAndClosingPrices/2013/11-Nov/201308nov.csv is already uploaded to gcs
+2023-07-20 04:53:09,727 - INFO - File downloaded: 20131107_new.lis.Z
+2023-07-20 04:53:09,729 - INFO - Operating System: Windows
+2023-07-20 04:53:09,974 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131107_new.lis.Z file etracted: Completed
+2023-07-20 04:53:09,989 - INFO - lis file converted to dataframe
+2023-07-20 04:53:09,999 - INFO - 
+
+2023-07-20 04:53:10,128 - INFO - file data/PSXOpeningAndClosingPrices/2013/11-Nov/201304nov.csv is already uploaded to gcs
+2023-07-20 04:53:10,638 - INFO - blob: data/PSXOpeningAndClosingPrices/2013/11-Nov/201306nov.csv
+2023-07-20 04:53:11,949 - INFO - blob: data/PSXOpeningAndClosingPrices/2013/11-Nov/201307nov.csv
+2023-07-20 04:53:12,047 - INFO - file data/PSXOpeningAndClosingPrices/2013/11-Nov/201305nov.csv is already uploaded to gcs
+2023-07-20 04:53:13,646 - INFO - file data/PSXOpeningAndClosingPrices/2013/11-Nov/201306nov.csv is already uploaded to gcs
+2023-07-20 04:53:15,287 - INFO - file data/PSXOpeningAndClosingPrices/2013/11-Nov/201307nov.csv is already uploaded to gcs
+2023-07-20 04:53:15,644 - INFO - 
+
+2023-07-20 04:53:15,645 - INFO - Total Execution Time: 0:00:13.407678
+2023-07-20 04:53:15,645 - INFO - 
+
+2023-07-20 04:53:15,646 - INFO - main ends
+2023-07-20 23:57:24,863 - INFO - Start Date: 2013-11-04
+2023-07-20 23:57:24,888 - INFO - End Date: 2013-11-10
+2023-07-20 23:57:24,889 - INFO - 
+
+2023-07-20 23:57:30,379 - INFO - File downloaded: 20131104_new.lis.Z
+2023-07-20 23:57:30,380 - INFO - Operating System: Windows
+2023-07-20 23:57:30,381 - INFO - File downloaded: 20131108_new.lis.Z
+2023-07-20 23:57:30,381 - INFO - Operating System: Windows
+2023-07-20 23:57:30,858 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131104_new.lis.Z file etracted: Completed
+2023-07-20 23:57:30,871 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131108_new.lis.Z file etracted: Completed
+2023-07-20 23:57:30,881 - INFO - lis file converted to dataframe
+2023-07-20 23:57:30,895 - INFO - lis file converted to dataframe
+2023-07-20 23:57:30,907 - INFO - error thrown: 'NoneType' object has no attribute 'cursor'
+2023-07-20 23:57:30,907 - INFO - 
+
+2023-07-20 23:57:30,911 - INFO - error thrown: 'NoneType' object has no attribute 'cursor'
+2023-07-20 23:57:30,912 - INFO - 
+
+2023-07-20 23:57:32,053 - INFO - File downloaded: 20131105_new.lis.Z
+2023-07-20 23:57:32,054 - INFO - Operating System: Windows
+2023-07-20 23:57:32,256 - INFO - Failed to download the file.
+2023-07-20 23:57:32,289 - INFO - 20131109_new.lis.Z not found
+2023-07-20 23:57:32,295 - INFO - 
+
+2023-07-20 23:57:32,342 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131105_new.lis.Z file etracted: Completed
+2023-07-20 23:57:32,361 - INFO - lis file converted to dataframe
+2023-07-20 23:57:32,370 - INFO - error thrown: 'NoneType' object has no attribute 'cursor'
+2023-07-20 23:57:32,370 - INFO - 
+
+2023-07-20 23:57:33,285 - INFO - File downloaded: 20131106_new.lis.Z
+2023-07-20 23:57:33,286 - INFO - Operating System: Windows
+2023-07-20 23:57:33,439 - INFO - Failed to download the file.
+2023-07-20 23:57:33,439 - INFO - 20131110_new.lis.Z not found
+2023-07-20 23:57:33,440 - INFO - 
+
+2023-07-20 23:57:33,591 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131106_new.lis.Z file etracted: Completed
+2023-07-20 23:57:33,608 - INFO - lis file converted to dataframe
+2023-07-20 23:57:33,615 - INFO - error thrown: 'NoneType' object has no attribute 'cursor'
+2023-07-20 23:57:33,617 - INFO - 
+
+2023-07-20 23:57:34,658 - INFO - File downloaded: 20131107_new.lis.Z
+2023-07-20 23:57:34,661 - INFO - Operating System: Windows
+2023-07-20 23:57:34,946 - INFO - data/PSXOpeningAndClosingPrices/2013/11-Nov/20131107_new.lis.Z file etracted: Completed
+2023-07-20 23:57:34,962 - INFO - lis file converted to dataframe
+2023-07-20 23:57:34,971 - INFO - error thrown: 'NoneType' object has no attribute 'cursor'
+2023-07-20 23:57:34,973 - INFO - 
+
+2023-07-20 23:57:35,252 - INFO - 
+
+2023-07-20 23:57:35,253 - INFO - Total Execution Time: 0:00:08.142610
+2023-07-20 23:57:35,253 - INFO - 
+
+2023-07-20 23:57:35,254 - INFO - main ends
